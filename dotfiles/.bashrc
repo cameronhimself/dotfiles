@@ -7,7 +7,7 @@ fi
 
 unset MAILCHECK
 
-export BASH_IT="~/.bash_it"
+export BASH_IT="$HOME/.bash_it"
 export BASH_IT_THEME=demula
 export SCM_CHECK=true
 

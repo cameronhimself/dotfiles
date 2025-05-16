@@ -11,7 +11,9 @@ if [ ! -f .envrc ]; then
   echo "Copy .envrc.example to .envrc and insert values before running this script."
 fi
 
-git clone --quiet --depth 1 --branch v3.0.3 https://github.com/Bash-it/bash-it.git ~/.bash_it
+if [ ! -e ~/.bash_it ]; then
+  git clone --quiet --depth 1 --branch v3.0.3 https://github.com/Bash-it/bash-it.git ~/.bash_it
+fi
 
 echo "#!/usr/bin/bash" > dotfiles/.secrets
 if command -v bw &> /dev/null; then
@@ -26,4 +28,12 @@ else
   echo "Install BitWarden CLI to set up secrets."
 fi
 
+if [ -f personal ]; then
+  cp personal dotfiles/.personal
+else
+  echo "Be sure to copy 'personal.example' to 'personal' and add your info, then run this command again."
+fi
+
 stow dotfiles
+
+echo "Done! It's probably a good idea to restart your terminal."
