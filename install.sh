@@ -11,6 +11,8 @@ if [ ! -f .envrc ]; then
   echo "Copy .envrc.example to .envrc and insert values before running this script."
 fi
 
+git clone --quiet --depth 1 --branch v3.0.3 https://github.com/Bash-it/bash-it.git ~/.bash_it
+
 echo "#!/usr/bin/bash" > dotfiles/.secrets
 if command -v bw &> /dev/null; then
   bw logout || true
